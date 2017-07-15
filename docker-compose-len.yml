@@ -1,0 +1,51 @@
+version: '2'
+services:
+    datastd_org_db_en:
+        build:
+            context: ./db
+            dockerfile: Dockerfile
+        environment:
+            - MYSQL_ROOT_HOST=%
+            - MYSQL_ROOT_PASSWORD=3dodPaTXF5
+
+    datastd_org_web_en:
+        build:
+            context: ./web
+            dockerfile: Dockerfile
+        ports:
+            - "8081:80"
+        links:
+            - datastd_org_db_en
+            - datastd_org_parsoid
+            - datastd_org_es
+            - datastd_org_memcache
+        environment:
+            - MW_SITE_SERVER=//localhost:8081
+            - MW_SITE_NAME=Datastd
+            - MW_SITE_LANG=en
+            - MW_DEFAULT_SKIN=vector
+            - MW_ENABLE_UPLOADS=1
+            - MW_USE_INSTANT_COMMONS=0
+            - MW_ADMIN_USER=admin
+            - MW_ADMIN_PASS=q32Gx7Amg7
+            - MW_DB_NAME=mediawiki_en
+            - MW_DB_USER=mwuser
+            - MW_DB_PASS=18fj38vz2@
+            - MW_DB_INSTALLDB_USER=root
+            - MW_DB_INSTALLDB_PASS=3dodPaTXF5
+            - MW_AUTOUPDATE=true
+
+    datastd_org_memcache:
+        build:
+            context: ./memcache
+            dockerfile: Dockerfile
+
+    datastd_org_parsoid:
+        build:
+            context: ./parsoid
+            dockerfile: Dockerfile
+
+    datastd_org_es:
+        build:
+            context: ./elasticsearch
+            dockerfile: Dockerfile
