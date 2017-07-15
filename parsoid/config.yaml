@@ -49,7 +49,15 @@ services:
           #    uri: 'http://my.proxy:1234/'
           #    headers:  # optional
           #        'X-Forwarded-Proto': 'https'
-
+        -
+            uri: 'http://web_en/w/api.php'
+            domain: 'web_en'
+        -
+            uri: 'http://web_ru/w/api.php'
+            domain: 'web_ru'
+        -
+            uri: 'http://web_de/w/api.php'
+            domain: 'web_de'
         # We pre-define wikipedias as 'enwiki', 'dewiki' etc. Similarly
         # for other projects: 'enwiktionary', 'enwikiquote', 'enwikibooks',
         # 'enwikivoyage' etc.
