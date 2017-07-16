@@ -31,10 +31,10 @@ $wgUseInstantCommons  = getenv( 'MW_USE_INSTANT_COMMONS' );
 
 # The relative URL path to the logo.  Make sure you change this from the default,
 # or else you'll overwrite your logo when you upgrade!
-#$wgLogo = "$wgStylePath/common/images/wiki.png";
+$wgLogo = "$wgScriptPath/logo.png";
 
 # The URL of the site favicon (the small icon displayed next to a URL in the address bar of a browser)
-#$wgFavicon = "$wgScriptPath/favicon.ico";
+$wgFavicon = "$wgScriptPath/favicon.ico";
 
 ##### Short URLs
 ## https://www.mediawiki.org/wiki/Manual:Short_URL
@@ -42,10 +42,13 @@ $wgArticlePath = "/wiki/$1";
 ## Also see mediawiki.conf
 
 ##### Improve performance
+# APC has several problems in latest versions of WediaWiki and extensions, for example:
+# https://www.mediawiki.org/wiki/Extension:Flow#.22Exception_Caught:_CAS_is_not_implemented_in_Xyz.22
+# https://www.mediawiki.org/wiki/Manual:$wgMainCacheType
 #$wgMainCacheType = CACHE_ACCEL;
-#$wgSessionCacheType = CACHE_DB; #This may cause problems when CACHE_ACCEL is used, see https://www.mediawiki.org/wiki/Manual:$wgMainCacheType
+#$wgSessionCacheType = CACHE_DB; #This may cause problems when CACHE_ACCEL is used
 
-# https://www.mediawiki.org/wiki/Memcached
+# Use Memcached, see https://www.mediawiki.org/wiki/Memcached
 $wgMainCacheType = CACHE_MEMCACHED;
 $wgParserCacheType = CACHE_MEMCACHED; # optional
 $wgMessageCacheType = CACHE_MEMCACHED; # optional

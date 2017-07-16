@@ -168,6 +168,8 @@ RUN set -x; ln -s /etc/apache2/sites-available/000-mediawiki.conf /etc/apache2/s
 COPY run-apache.sh /run-apache.sh
 RUN chmod -v +x /run-apache.sh
 
+COPY favicon.ico $MW_HOME/favicon.ico
+COPY logo.png $MW_HOME/logo.png
 COPY DockerSettings.php $MW_HOME/DockerSettings.php
 COPY CustomSettings.php $MW_HOME/CustomSettings.php
 
