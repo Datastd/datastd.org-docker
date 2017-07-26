@@ -1,6 +1,6 @@
 version: '2'
 services:
-    datastd_org_db:
+    db:
         build:
             context: ./db
             dockerfile: Dockerfile
@@ -8,17 +8,17 @@ services:
             - MYSQL_ROOT_HOST=%
             - MYSQL_ROOT_PASSWORD=3dodPaTXF5
 
-    datastd_org_web_en:
+    web_en:
         build:
-            context: ./web
+            context: ./web_en
             dockerfile: Dockerfile
         ports:
             - "8081:80"
         links:
-            - datastd_org_db_en
-            - datastd_org_parsoid_en
-            - datastd_org_es
-            - datastd_org_memcache
+            - db
+            - parsoid
+            - elasticsearch
+            - memcache
         environment:
             - MW_SITE_SERVER=//localhost:8081
             - MW_SITE_NAME=Datastd
@@ -35,17 +35,17 @@ services:
             - MW_DB_INSTALLDB_PASS=3dodPaTXF5
             - MW_AUTOUPDATE=true
 
-    datastd_org_web_ru:
+    web_ru:
         build:
-            context: ./web
+            context: ./web_ru
             dockerfile: Dockerfile
         ports:
             - "8082:80"
         links:
-            - datastd_org_db_ru
-            - datastd_org_parsoid_ru
-            - datastd_org_es
-            - datastd_org_memcache
+            - db
+            - parsoid
+            - elasticsearch
+            - memcache
         environment:
             - MW_SITE_SERVER=//localhost:8082
             - MW_SITE_NAME=Datastd
@@ -62,17 +62,17 @@ services:
             - MW_DB_INSTALLDB_PASS=3dodPaTXF5
             - MW_AUTOUPDATE=true
 
-    datastd_org_web_de:
+    web_de:
         build:
-            context: ./web
+            context: ./web_de
             dockerfile: Dockerfile
         ports:
             - "8083:80"
         links:
-            - datastd_org_db_de
-            - datastd_org_parsoid_de
-            - datastd_org_es
-            - datastd_org_memcache
+            - db
+            - parsoid
+            - elasticsearch
+            - memcache
         environment:
             - MW_SITE_SERVER=//localhost:8083
             - MW_SITE_NAME=Datastd
@@ -89,17 +89,17 @@ services:
             - MW_DB_INSTALLDB_PASS=3dodPaTXF5
             - MW_AUTOUPDATE=true
 
-    datastd_org_memcache:
+    memcache:
         build:
             context: ./memcache
             dockerfile: Dockerfile
 
-    datastd_org_parsoid:
+    parsoid:
         build:
             context: ./parsoid
             dockerfile: Dockerfile
 
-    datastd_org_es:
+    elasticsearch:
         build:
             context: ./elasticsearch
             dockerfile: Dockerfile
