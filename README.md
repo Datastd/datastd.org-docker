@@ -10,11 +10,11 @@ This repo contains [Docker Compose](https://docs.docker.com/compose/) containers
 
 Clone the repo, create and start containers:
 ```sh
-git clone https://github.com/pastakhov/compose-mediawiki-ubuntu.git
-cd compose-mediawiki-ubuntu
-docker-compose up
+git clone https://github.com/Datastd/datastd.org-docker.git
+cd datastd.org-docker
+docker-compose -f <file> up
 ```
-Wait for the completion of the build and initialization process and access it via `http://localhost:8080` in a browser.
+Wait for the completion of the build and initialization process and access it via `http://localhost:8080` (or 8081, 8082, 8083) in a browser.
 
 Enjoy with MediaWiki + VisualEditor + Elasticsearch + most popular extensions
 
